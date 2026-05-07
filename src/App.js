@@ -6,7 +6,6 @@ function App() {
   const [weeks, setWeeks] = useState(8);
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [history, setHistory] = useState([]);
   const messageAnim = {
   animation: "fadeIn 0.25s ease-out",
 };
@@ -23,8 +22,6 @@ function App() {
       ...prev,
       { role: "user", text: `${goal} (${level} • ${weeks} weeks)` },
     ]);
-
-    setHistory((prev) => [...prev, goal]);
 
     setLoading(true);
 
