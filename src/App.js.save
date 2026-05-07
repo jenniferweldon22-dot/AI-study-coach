@@ -1,0 +1,86 @@
+import { useState } from "react";
+
+function App() {
+  const [goal, setGoal] = useState("");
+  const [plan, setPlan] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const generatePlan = async () => {
+    setLoading(true);
+    setPlan("");
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/generate-plan", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          goal: goal,
+          level: "beginner",
+          weeks: 8,
+        }),
+      });
+
+      const data = await response.json();
+      setPlan(data.plan || data.error);
+    } catch (error) {
+      setPlan("Error connecting to backend");
+    }
+
+    setLoading(false);
+  };
+
+  return (
+    <div style={{ padding: 40, fontFamily: "Arial" }}>
+      <h1>🚀 AI Study Coach</h1>
+
+      <input
+        value={goal}
+        onChange={(e) => setGoal(e.target.value)}
+        placeholder="What do you want to become?"
+        style={{ padding: 10, width: 300 }}
+      />
+
+      <br /><br />
+
+      <button onClick={generatePlan} style={{ padding: 10 }}>
+        Generate Plan
+      </button>
+
+      <br /><br />
+
+      {loading && <p>Generating your plan...</p>}
+
+      <pre style={{ whiteSpace: "pre-wrap", marginTop: 20 }}>
+        {plan}
+      </pre>
+    </div>
+  );
+}
+
+export default App;import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;

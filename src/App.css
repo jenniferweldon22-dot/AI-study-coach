@@ -1,38 +1,121 @@
+/* ===== GLOBAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== BACKGROUND (LUXURY SOFT PINK) ===== */
+body {
+  background: linear-gradient(135deg, #fff0f5, #ffffff);
+  color: #1c1c1c;
+}
+
+/* ===== CENTER APP ===== */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+/* ===== MAIN CARD ===== */
+.card {
+  width: 420px;
+  background: white;
+  padding: 32px;
+  border-radius: 22px;
+  border: 1px solid #f5e1ea;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+/* ===== TITLE ===== */
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* ===== SUBTITLE ===== */
+p {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 18px;
+}
+
+/* ===== INPUT ===== */
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #e8b7c5;
+  box-shadow: 0 0 0 3px rgba(232, 183, 197, 0.2);
+}
+
+/* ===== BUTTON ===== */
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #e8b7c5;
   color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
+button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ===== LOADING TEXT ===== */
+.loading {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #999;
+}
+
+/* ===== RESULT BOX ===== */
+pre {
+  margin-top: 20px;
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  font-size: 12px;
+  white-space: pre-wrap;
+  color: #333;
+}
+
+/* ===== REMOVE DEFAULT CRA STUFF ===== */
+.App-logo,
+.App-header,
 .App-link {
-  color: #61dafb;
+  display: none;
 }
-
-@keyframes App-logo-spin {
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.message {
+  transition: all 0.2s ease;
 }
